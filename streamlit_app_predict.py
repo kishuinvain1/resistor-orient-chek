@@ -126,7 +126,7 @@ def drawBoundingBox(results, saved_image):
 		
     cv2.imwrite("dets.jpg", img)
     res_img = Image.open("dets.jpg")
-    st.Image(res_img, caption="Detection Results")
+    st.image(res_img, caption="Detection Results")
 
     
 	
