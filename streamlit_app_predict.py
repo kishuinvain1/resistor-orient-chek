@@ -101,31 +101,50 @@ def segFormCrack(cl, x, y, w, h, cnf, saved_image, bias):
     else:
         st.write("No Crack Detected")
 	
-def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
+def drawBoundingBox(results, saved_image):
     #img = Image.open(saved_image)
     
 
-    #img = cv2.imread(saved_image)
+    img = cv2.imread(saved_image)
     img = cv2.cvtColor(saved_image,cv2.COLOR_BGR2RGB)
-    x = int(x)
-    y = int(y)
-    w = int(w)
-    h = int(h)
-    start_pnt = (x-w//2,y-h//2)
-    end_pnt = (x+w//2, y+h//2)
-    txt_start_pnt = (x-w//2, y-h//2-15)
-    if(cl == "Crack" or cl == "No-Crack"):
-        cl = "Non-Broken"
+    for item in results:
+        x = int(item['x'])
+        y = int(item['y'])
+        w = int(item['width'])
+        h = int(item['height'])
+        cl = item['class'] 
+        start_pnt = (x-w//2,y-h//2)
+        end_pnt = (x+w//2, y+h//2)
+        txt_start_pnt = (x-w//2, y-h//2-15)
+
+        if(cl == "Ok"):
+            img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
+            #img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 10, cv2.LINE_AA)
+        elif(cl == "Not-Ok"):
+            img = cv2.rectangle(img, start_pnt, end_pnt, (255,0,0), 10)
+            #img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 0), 10, cv2.LINE_AA)
+		
+    cv2.imwrite("dets.jpg", img)
+    res_img = Image.open("dets.jpg")
+    st.Image(res_img, caption="Detection Results")
+
     
-    img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
-    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 10, cv2.LINE_AA)	
-    st.image(img, caption='Resulting Image')	
+	
+    
     
 
 
 def predict(model, url):
     return model.predict(url, confidence=40, overlap=30).json()
     #return model.predict(url, hosted=True).json()
+	
+
+	
+def dispResults(results):
+       
+
+    cv2.imwrite("dets.jpg", img)
+            
 	
 	
 def main():
@@ -146,7 +165,8 @@ def main():
 	
 	
         results = model.predict("main_image.jpg", confidence=40, overlap=30)
-        print(len(results))
+        drawBoundingBox(results, "main_image.jpg")
+       
        
         #st.image(img, caption="Detection Results")
 	
