@@ -145,10 +145,10 @@ def main():
 	
 	
 	
-        results = model.predict("main_image.jpg", confidence=40, overlap=30).save("pred.jpg")
+        results = model.predict("main_image.jpg", confidence=40, overlap=30)
         print(results)
-        img = Image.open("pred.jpg")
-        st.image(img, caption="Detection Results")
+        #img = Image.open("pred.jpg")
+        #st.image(img, caption="Detection Results")
 	
 	
        
