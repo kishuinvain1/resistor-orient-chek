@@ -24,10 +24,11 @@ def load_image():
         image_data = uploaded_file.getvalue() 
         #st.image(image_data)
         name = uploaded_file.name
-        im = Image.open(name)
+        
+        path = os.path.abspath(name)
+        im = Image.open(path)
         rgb_im = im.convert("RGB")
         rgb_im.save("main_image_conv.jpg")
-        path = os.path.abspath(name)
         print("abs path")
         print(path)
 	
