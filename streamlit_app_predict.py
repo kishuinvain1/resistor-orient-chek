@@ -153,7 +153,7 @@ def dispResults(results):
 def main():
     st.title('Resistor Orient Check') 
     image, svd_img = load_image()
-    zoomin_bias = st.number_input('Zoomin Bias')
+    #zoomin_bias = st.number_input('Zoomin Bias')
    
     result = st.button('Predict')
     if(result):
