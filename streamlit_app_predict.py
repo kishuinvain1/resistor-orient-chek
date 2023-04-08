@@ -103,7 +103,7 @@ def segFormCrack(cl, x, y, w, h, cnf, saved_image, bias):
 	
 def drawBoundingBox(results, saved_image):
     #img = Image.open(saved_image)
-    ok_txt = u'\u2713'.encode('utf8')
+    ok_txt = u'\u2713'
     
 
     img = cv2.imread(saved_image)
