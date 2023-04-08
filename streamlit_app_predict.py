@@ -165,7 +165,7 @@ def main():
 	
 	
         #results = model.predict("main_image.jpg", confidence=40, overlap=30)
-        results = model.predict(svd_img.Name, confidence=40, overlap=30)
+        results = model.predict(svd_img, confidence=40, overlap=30)
         drawBoundingBox(results, "main_image.jpg")
        
        
