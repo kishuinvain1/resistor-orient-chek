@@ -103,6 +103,7 @@ def segFormCrack(cl, x, y, w, h, cnf, saved_image, bias):
 	
 def drawBoundingBox(results, saved_image):
     #img = Image.open(saved_image)
+    ok_txt = u'\u2713'.encode('utf8')
     
 
     img = cv2.imread(saved_image)
@@ -119,7 +120,7 @@ def drawBoundingBox(results, saved_image):
 
         if(cl == "Ok"):
             img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
-            #img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 10, cv2.LINE_AA)
+            img = cv2.putText(img, ok_txt, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 10, cv2.LINE_AA)
         elif(cl == "Not-Ok"):
             img = cv2.rectangle(img, start_pnt, end_pnt, (0,0,255), 10)
             #img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 0), 10, cv2.LINE_AA)
