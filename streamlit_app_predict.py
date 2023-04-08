@@ -146,7 +146,7 @@ def main():
 	
 	
         results = model.predict("main_image.jpg", confidence=40, overlap=30)
-        print(results[0])
+        print(len(results))
        
         #st.image(img, caption="Detection Results")
 	
