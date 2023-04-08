@@ -146,8 +146,8 @@ def main():
 	
 	
         model.predict(svd_img, confidence=40, overlap=30).save("pred.jpg")
-	img = Image.open("pred.jpg")
-	st.image(img, caption="Detection Results")
+        img = Image.open("pred.jpg")
+        st.image(img, caption="Detection Results")
 	
 	
        
