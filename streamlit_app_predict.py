@@ -26,9 +26,7 @@ def load_image():
         name = uploaded_file.name
         
         path = os.path.abspath(name)
-        im = Image.open(path)
-        rgb_im = im.convert("RGB")
-        rgb_im.save("main_image_conv.jpg")
+       
         print("abs path")
         print(path)
 	
@@ -169,9 +167,9 @@ def main():
 	
 	
 	
-        results = model.predict("main_image_conv.jpg", confidence=40, overlap=30)
+        results = model.predict("main_image.jpg", confidence=40, overlap=30)
         #results = model.predict(svd_img, confidence=40, overlap=30)
-        drawBoundingBox(results, "main_image_conv.jpg")
+        drawBoundingBox(results, "main_image.jpg")
        
        
         #st.image(img, caption="Detection Results")
