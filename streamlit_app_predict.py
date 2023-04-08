@@ -145,7 +145,7 @@ def main():
 	
 	
 	
-        model.predict(svd_img.name, confidence=40, overlap=30).save("pred.jpg")
+        model.predict("main_image.jpg", confidence=40, overlap=30).save("pred.jpg")
         img = Image.open("pred.jpg")
         st.image(img, caption="Detection Results")
 	
