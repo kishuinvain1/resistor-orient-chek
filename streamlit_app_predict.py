@@ -28,7 +28,7 @@ def load_image():
         print("abs path")
         print(path)
 	
-        cv2.imwrite("main_image.HEIC", opencv_image)
+        cv2.imwrite("main_image.jpg", opencv_image)
        
     return path, opencv_image
        
