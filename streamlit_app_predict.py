@@ -106,7 +106,7 @@ def drawBoundingBox(results, saved_image):
     
 
     img = cv2.imread(saved_image)
-    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+    #img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
     for item in results:
         x = int(item['x'])
         y = int(item['y'])
