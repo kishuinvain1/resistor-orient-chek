@@ -145,7 +145,8 @@ def main():
 	
 	
 	
-        model.predict("main_image.jpg", confidence=40, overlap=30).save("pred.jpg")
+        results = model.predict("main_image.jpg", confidence=40, overlap=30).save("pred.jpg")
+        print(results[0])
         img = Image.open("pred.jpg")
         st.image(img, caption="Detection Results")
 	
